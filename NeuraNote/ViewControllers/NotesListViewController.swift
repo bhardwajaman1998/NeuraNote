@@ -10,16 +10,21 @@ class NotesListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let viewModel = NotesListViewModel()
+    private let manager = CoreDataStack()
+    private var viewModel: NotesListViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        viewModel.notesUpdated = { [weak self] in
-            self?.tableView.reloadData()
+        viewModel = NotesListViewModel(manager: manager)
+        viewModel.loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if viewModel.notesLoaded {
+        }else{
+            
         }
-        viewModel.fetchNotes()
     }
     
     func setUptable(){
@@ -28,6 +33,7 @@ class NotesListViewController: UIViewController {
         
         let noteCellNib = UINib(nibName: "NoteCellTableViewCell", bundle: nil)
         tableView.register(noteCellNib, forCellReuseIdentifier: "NoteCellTableViewCell")
+        self.tableView.reloadData()
     }
     
     @IBAction func addNoteTapped(_ sender: Any) {

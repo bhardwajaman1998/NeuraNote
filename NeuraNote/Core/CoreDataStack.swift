@@ -8,16 +8,23 @@
 import CoreData
 
 class CoreDataStack {
-    static let shared = CoreDataStack()
     let persistentConatiner: NSPersistentContainer
     
     private init() {
         persistentConatiner = NSPersistentContainer(name: "NeuraNote")
-        persistentConatiner.loadPersistentStores(completionHandler: { _, error in
-            if let error = error{
-                fatalError("Core Data Error: \(error)")
+    }
+    
+    func loadCoreData(completion: @escaping (Bool)->Void){
+        persistentConatiner.loadPersistentStores{ description, error in
+            DispatchQueue.main.async {
+                if let error = error as NSError? {
+                    print("Core Data loading error: \(error.localizedDescription)")
+                    completion(false)
+                }else{
+                    completion(true)
+                }
             }
-        })
+        }
     }
     var context: NSManagedObjectContext {
         return persistentConatiner.viewContext
