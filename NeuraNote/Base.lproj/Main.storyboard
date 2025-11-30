@@ -16,8 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3CB-WU-1cw">
+                                <rect key="frame" x="15" y="192" width="393" height="64"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="GC3-GD-2oT"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-Gm-IMw">
-                                <rect key="frame" x="20" y="172" width="353" height="489"/>
+                                <rect key="frame" x="20" y="276" width="353" height="385"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TO-dz-Dd4">
@@ -27,25 +34,33 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="addNoteTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQr-AB-juw"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1xL-Gm-IMw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IUE-Ry-Gpy"/>
+                            <constraint firstItem="3CB-WU-1cw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="1zA-hV-VwY"/>
+                            <constraint firstItem="3CB-WU-1cw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ESF-1Z-ace"/>
+                            <constraint firstItem="3CB-WU-1cw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="15" id="FYW-Jb-lKT"/>
                             <constraint firstItem="4TO-dz-Dd4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="M9w-te-DnB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4TO-dz-Dd4" secondAttribute="bottom" constant="68" id="OyM-ig-Dya"/>
                             <constraint firstItem="1xL-Gm-IMw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Qrc-sd-Npp"/>
+                            <constraint firstItem="1xL-Gm-IMw" firstAttribute="top" secondItem="3CB-WU-1cw" secondAttribute="bottom" constant="20" id="bYw-as-dCE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1xL-Gm-IMw" secondAttribute="trailing" constant="20" id="bkW-Qt-AGR"/>
                             <constraint firstItem="4TO-dz-Dd4" firstAttribute="top" secondItem="1xL-Gm-IMw" secondAttribute="bottom" constant="20" id="nFs-K8-lNq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4TO-dz-Dd4" secondAttribute="trailing" constant="20" id="uSz-je-cZr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Fqx-hX-Rhx"/>
+                    <navigationItem key="navigationItem" id="Fqx-hX-Rhx">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="XwF-rf-pwu">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="createNewNoteTapped:" destination="BYZ-38-t0r" id="baQ-pI-dx9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="3CB-WU-1cw" id="jcl-C6-fN7"/>
                         <outlet property="tableView" destination="1xL-Gm-IMw" id="lwV-DV-6SL"/>
                     </connections>
                 </viewController>
@@ -79,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VcQ-TB-ULM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2083.2061068702287" y="155.63380281690141"/>
+            <point key="canvasLocation" x="3819" y="167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aG4-el-nay">
@@ -99,8 +114,63 @@
             </objects>
             <point key="canvasLocation" x="-669.46564885496184" y="156.33802816901408"/>
         </scene>
+        <!--Edit Note View Controller-->
+        <scene sceneID="HFH-Vl-SQP">
+            <objects>
+                <viewController storyboardIdentifier="EditNoteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Rw-Ak-mJY" customClass="EditNoteViewController" customModule="NeuraNote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KCQ-2J-3lp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Sw-u9-UL8">
+                                <rect key="frame" x="20" y="138" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NZw-gB-UZI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U3s-tr-IkF">
+                                <rect key="frame" x="20" y="188" width="353" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TWo-lv-EEc"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Xt6-z4-2jc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8Sw-u9-UL8" firstAttribute="leading" secondItem="Xt6-z4-2jc" secondAttribute="leading" constant="20" id="90g-FQ-fA7"/>
+                            <constraint firstItem="U3s-tr-IkF" firstAttribute="leading" secondItem="Xt6-z4-2jc" secondAttribute="leading" constant="20" id="9XL-r5-p7P"/>
+                            <constraint firstItem="Xt6-z4-2jc" firstAttribute="trailing" secondItem="8Sw-u9-UL8" secondAttribute="trailing" constant="20" id="K51-Je-PXw"/>
+                            <constraint firstItem="Xt6-z4-2jc" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U3s-tr-IkF" secondAttribute="bottom" constant="50" id="Pfg-FF-3nd"/>
+                            <constraint firstItem="8Sw-u9-UL8" firstAttribute="top" secondItem="Xt6-z4-2jc" secondAttribute="top" constant="20" id="ZRn-Tg-ZiE"/>
+                            <constraint firstItem="U3s-tr-IkF" firstAttribute="top" secondItem="8Sw-u9-UL8" secondAttribute="bottom" constant="10" id="aCi-BE-ZIT"/>
+                            <constraint firstItem="Xt6-z4-2jc" firstAttribute="trailing" secondItem="U3s-tr-IkF" secondAttribute="trailing" constant="20" id="tDj-78-10m"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="contentTextView" destination="U3s-tr-IkF" id="XGW-2u-LzS"/>
+                        <outlet property="titleField" destination="8Sw-u9-UL8" id="9LJ-Nb-RXs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHW-3I-nnL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269" y="-527"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

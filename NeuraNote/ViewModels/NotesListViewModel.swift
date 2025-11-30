@@ -8,77 +8,56 @@
 internal import CoreData
 
 class NotesListViewModel {
+    
     let manager: CoreDataStack
+    var notes: [Note] = []
     
-    var notesUpdated: (() -> Void)?
-    private(set) var notes: [Note] = []
-    private(set) var notesLoaded = false
-    
-    init(manager: CoreDataStack){
+    init(manager: CoreDataStack) {
         self.manager = manager
-        loadData()
     }
     
-    func loadData(){
-        manager.loadCoreData{ [weak self] result in
-            DispatchQueue.main.async{
-                self?.notesLoaded = result
-                if result {
-                    self?.fetchNotes()
-                }
-            }
-        }
-    }
-    
-    func fetchNotes(with searchText: String = "") {
+    func fetchNotes(query: String = "") {
         let request: NSFetchRequest<Note> = Note.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         
-        if !searchText.isEmpty {
-            request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+        if !query.isEmpty {
+            request.predicate = NSPredicate(format: "title CONTAINS[c] %@", query)
         }
         
-        do{
-            notes = try manager.context.fetch(request)
-            notesUpdated?()
-        } catch{
-            print("Error fetching notes: \(error)")
+        do {
+            notes = try manager.persistentConatiner.viewContext.fetch(request)
+        } catch {
+            print("Failed fetching notes:", error)
         }
     }
     
-    func addNote() -> Note{
-        let newNote = Note(context: manager.context)
-        newNote.id = UUID()
-        newNote.createdAt = Date()
-        saveContext()
-        
+    func createNote() -> Note {
+        let note = Note(context: manager.persistentConatiner.viewContext)
+        note.id = UUID()
+        note.createdAt = Date()
+        save()
         fetchNotes()
-        
-        return newNote
+        return note
     }
     
-    func deleteNote(_ note: Note){
-        manager.context.delete(note)
-        saveContext()
+    func delete(_ note: Note) {
+        manager.persistentConatiner.viewContext.delete(note)
+        save()
         fetchNotes()
     }
     
-    func updateNote(_ note: Note, title: String, content: String){
+    func update(_ note: Note, title: String, content: String) {
         note.title = title
         note.content = content
-        saveContext()
+        save()
         fetchNotes()
     }
     
-    func searchNotes(with text: String) {
-        fetchNotes(with: text)
-    }
-    
-    private func saveContext(){
+    func save() {
         do {
-            try manager.context.save()
+            try manager.persistentConatiner.viewContext.save()
         } catch {
-            print("Error saving context: \(error)")
+            print("Save error:", error)
         }
     }
 }
