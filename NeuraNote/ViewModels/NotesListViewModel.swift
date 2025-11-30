@@ -8,7 +8,7 @@
 internal import CoreData
 
 class NotesListViewModel {
-    private let manager: CoreDataStack
+    let manager: CoreDataStack
     
     var notesUpdated: (() -> Void)?
     private(set) var notes: [Note] = []
@@ -32,21 +32,22 @@ class NotesListViewModel {
     
     func fetchNotes(with searchText: String = "") {
         let request: NSFetchRequest<Note> = Note.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         
         if !searchText.isEmpty {
-            request.predicate = NSPredicate(format: "title CONTAINS %@", searchText)
+            request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
         }
         
         do{
-            notes = try manager.persistentConatiner.viewContext.fetch(request)
+            notes = try manager.context.fetch(request)
+            notesUpdated?()
         } catch{
             print("Error fetching notes: \(error)")
         }
     }
     
     func addNote() -> Note{
-        let newNote = Note(context: manager.persistentConatiner.viewContext)
+        let newNote = Note(context: manager.context)
         newNote.id = UUID()
         newNote.createdAt = Date()
         saveContext()
@@ -57,14 +58,14 @@ class NotesListViewModel {
     }
     
     func deleteNote(_ note: Note){
-        manager.persistentConatiner.viewContext.delete(note)
+        manager.context.delete(note)
         saveContext()
         fetchNotes()
     }
     
     func updateNote(_ note: Note, title: String, content: String){
         note.title = title
-        note.description = content
+        note.content = content
         saveContext()
         fetchNotes()
     }
@@ -75,7 +76,7 @@ class NotesListViewModel {
     
     private func saveContext(){
         do {
-            try manager.persistentConatiner.viewContext.save()
+            try manager.context.save()
         } catch {
             print("Error saving context: \(error)")
         }

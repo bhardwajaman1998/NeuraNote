@@ -5,12 +5,12 @@
 //  Created by Aman Bhardwaj on 2025-11-22.
 //
 
-import CoreData
+internal import CoreData
 
 class CoreDataStack {
     let persistentConatiner: NSPersistentContainer
     
-    private init() {
+    init() {
         persistentConatiner = NSPersistentContainer(name: "NeuraNote")
     }
     
