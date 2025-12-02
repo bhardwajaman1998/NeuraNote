@@ -19,7 +19,9 @@ class EditNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let add = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(menuButtonTapped))
-        navigationItem.leftBarButtonItem = add
+        navigationItem.rightBarButtonItem = add
+        let back = UIBarButtonItem(title: "back", style: .plain, target: self, action: #selector(backTapped))
+        navigationItem.leftBarButtonItem = back
         setUpNote()
     }
     
@@ -30,6 +32,10 @@ class EditNoteViewController: UIViewController {
         
         contentTextView.delegate = self
         styleTextView()
+    }
+    
+    @objc func backTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func menuButtonTapped() {

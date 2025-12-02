@@ -9,11 +9,16 @@ import UIKit
 
 class NoteCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var mainContentView: UIView!
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setUpUI()
+    }
+    
+    func setUpUI() {
+        self.mainContentView.addShadowAndCornerRadius()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -16,40 +16,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3CB-WU-1cw">
-                                <rect key="frame" x="15" y="192" width="393" height="64"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-Gm-IMw">
+                                <rect key="frame" x="0.0" y="276" width="393" height="498"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="3CB-WU-1cw">
+                                <rect key="frame" x="0.0" y="192" width="393" height="64"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="GC3-GD-2oT"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-Gm-IMw">
-                                <rect key="frame" x="20" y="276" width="353" height="385"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TO-dz-Dd4">
-                                <rect key="frame" x="20" y="681" width="353" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="HHs-0b-xjg"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="3CB-WU-1cw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="1zA-hV-VwY"/>
+                            <constraint firstItem="3CB-WU-1cw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1zA-hV-VwY"/>
                             <constraint firstItem="3CB-WU-1cw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ESF-1Z-ace"/>
-                            <constraint firstItem="3CB-WU-1cw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="15" id="FYW-Jb-lKT"/>
-                            <constraint firstItem="4TO-dz-Dd4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="M9w-te-DnB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4TO-dz-Dd4" secondAttribute="bottom" constant="68" id="OyM-ig-Dya"/>
-                            <constraint firstItem="1xL-Gm-IMw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Qrc-sd-Npp"/>
+                            <constraint firstItem="3CB-WU-1cw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FYW-Jb-lKT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1xL-Gm-IMw" secondAttribute="bottom" constant="10" id="NT4-4t-9pR"/>
+                            <constraint firstItem="1xL-Gm-IMw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qrc-sd-Npp"/>
+                            <constraint firstAttribute="trailing" secondItem="3CB-WU-1cw" secondAttribute="trailing" constant="15" id="WkH-qt-9dL"/>
                             <constraint firstItem="1xL-Gm-IMw" firstAttribute="top" secondItem="3CB-WU-1cw" secondAttribute="bottom" constant="20" id="bYw-as-dCE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1xL-Gm-IMw" secondAttribute="trailing" constant="20" id="bkW-Qt-AGR"/>
-                            <constraint firstItem="4TO-dz-Dd4" firstAttribute="top" secondItem="1xL-Gm-IMw" secondAttribute="bottom" constant="20" id="nFs-K8-lNq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4TO-dz-Dd4" secondAttribute="trailing" constant="20" id="uSz-je-cZr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1xL-Gm-IMw" secondAttribute="trailing" id="bkW-Qt-AGR"/>
+                            <constraint firstItem="1xL-Gm-IMw" firstAttribute="top" secondItem="3CB-WU-1cw" secondAttribute="bottom" constant="20" id="dUQ-rI-AIF"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WkH-qt-9dL"/>
+                                <exclude reference="bYw-as-dCE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Fqx-hX-Rhx">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="XwF-rf-pwu">
@@ -151,8 +150,14 @@
     </scenes>
     <resources>
         <image name="square.and.pencil" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

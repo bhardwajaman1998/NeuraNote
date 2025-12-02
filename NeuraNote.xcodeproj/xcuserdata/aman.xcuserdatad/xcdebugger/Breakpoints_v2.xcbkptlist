@@ -14,8 +14,8 @@
             filePath = "NeuraNote/ViewControllers/EditNoteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "splitText(_:)"
             landmarkType = "7">
          </BreakpointContent>

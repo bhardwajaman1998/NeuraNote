@@ -37,6 +37,9 @@ class NotesListViewController: UIViewController {
         let nib = UINib(nibName: "NoteCellTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NoteCellTableViewCell")
         
+        tableView.bouncesVertically = false
+        tableView.rowHeight = UITableView.automaticDimension
+        
         searchBar.delegate = self
     }
     @IBAction func createNewNote(_ sender: Any) {
