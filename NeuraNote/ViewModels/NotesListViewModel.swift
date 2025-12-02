@@ -47,10 +47,15 @@ class NotesListViewModel {
     }
     
     func update(_ note: Note, title: String, content: String) {
-        note.title = title
-        note.content = content
-        save()
-        fetchNotes()
+        
+        if title.isEmpty && content.isEmpty {
+            delete(note)
+        }else{
+            note.title = title
+            note.content = content
+            save()
+            fetchNotes()
+        }
     }
     
     func save() {

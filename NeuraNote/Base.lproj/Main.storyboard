@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nt0-sL-dtZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nt0-sL-dtZ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -122,35 +122,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Sw-u9-UL8">
-                                <rect key="frame" x="20" y="138" width="353" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="NZw-gB-UZI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U3s-tr-IkF">
-                                <rect key="frame" x="20" y="188" width="353" height="50"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U3s-tr-IkF">
+                                <rect key="frame" x="20" y="138" width="353" height="626"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="TWo-lv-EEc"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xt6-z4-2jc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8Sw-u9-UL8" firstAttribute="leading" secondItem="Xt6-z4-2jc" secondAttribute="leading" constant="20" id="90g-FQ-fA7"/>
                             <constraint firstItem="U3s-tr-IkF" firstAttribute="leading" secondItem="Xt6-z4-2jc" secondAttribute="leading" constant="20" id="9XL-r5-p7P"/>
-                            <constraint firstItem="Xt6-z4-2jc" firstAttribute="trailing" secondItem="8Sw-u9-UL8" secondAttribute="trailing" constant="20" id="K51-Je-PXw"/>
-                            <constraint firstItem="Xt6-z4-2jc" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U3s-tr-IkF" secondAttribute="bottom" constant="50" id="Pfg-FF-3nd"/>
-                            <constraint firstItem="8Sw-u9-UL8" firstAttribute="top" secondItem="Xt6-z4-2jc" secondAttribute="top" constant="20" id="ZRn-Tg-ZiE"/>
-                            <constraint firstItem="U3s-tr-IkF" firstAttribute="top" secondItem="8Sw-u9-UL8" secondAttribute="bottom" constant="10" id="aCi-BE-ZIT"/>
+                            <constraint firstItem="Xt6-z4-2jc" firstAttribute="bottom" secondItem="U3s-tr-IkF" secondAttribute="bottom" constant="20" id="OfY-gI-q7Z"/>
+                            <constraint firstItem="U3s-tr-IkF" firstAttribute="top" secondItem="Xt6-z4-2jc" secondAttribute="top" constant="20" id="WHd-NO-yk5"/>
                             <constraint firstItem="Xt6-z4-2jc" firstAttribute="trailing" secondItem="U3s-tr-IkF" secondAttribute="trailing" constant="20" id="tDj-78-10m"/>
                         </constraints>
                     </view>
@@ -158,7 +142,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contentTextView" destination="U3s-tr-IkF" id="XGW-2u-LzS"/>
-                        <outlet property="titleField" destination="8Sw-u9-UL8" id="9LJ-Nb-RXs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHW-3I-nnL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,9 +151,6 @@
     </scenes>
     <resources>
         <image name="square.and.pencil" catalog="system" width="128" height="121"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

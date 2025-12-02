@@ -17,19 +17,16 @@ class NotesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
-        
         registerDelegates()
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
         viewModel.manager.loadCoreData { [weak self] success in
             if success {
                 self?.viewModel.fetchNotes()
                 self?.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
     
     func registerDelegates(){
