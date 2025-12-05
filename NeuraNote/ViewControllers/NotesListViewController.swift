@@ -90,11 +90,11 @@ extension NotesListViewController: UITableViewDelegate, UITableViewDataSource {
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
 
-        if editingStyle == .delete {
-            let note = viewModel.notes[indexPath.row]
-            viewModel.delete(note)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+//        if editingStyle == .delete {
+//            let note = viewModel.notes[indexPath.row]
+//            viewModel.delete(note)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//        }
     }
 }
 
